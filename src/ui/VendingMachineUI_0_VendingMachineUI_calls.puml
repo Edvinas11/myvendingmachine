@@ -1,0 +1,306 @@
+@startuml
+
+/' diagram meta data start
+config=CallConfiguration;
+{
+  "rootMethod": "ui.VendingMachineUI#VendingMachineUI()",
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": "",
+    "treatFinalFieldsAsMandatory": false
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": false,
+    "cutEnum": true,
+    "cutTests": true,
+    "cutClient": true,
+    "cutDataAccess": true,
+    "cutInterfaceStructures": true,
+    "cutDataStructures": true,
+    "cutGetterAndSetter": true,
+    "cutConstructors": true
+  },
+  "graphTraversal": {
+    "forwardDepth": 3,
+    "backwardDepth": 3,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": true,
+    "hideInterfaceCalls": true, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false, // root node is included
+    "useMethodCallsForStructureDiagram": "ForwardOnly" // ForwardOnly, BothDirections, No
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showMethodParametersTypes": false,
+    "showMethodParametersNames": false,
+    "showMethodReturnType": false,
+    "showPackageLevels": 2,
+    "showCallOrder": false,
+    "edgeMode": "MethodsOnly", // TypesOnly, MethodsOnly, TypesAndMethods, MethodsAndDirectTypeUsage
+    "showDetailedClassStructure": false
+  },
+  "rootClass": "ui.VendingMachineUI",
+  "extensionCallbackMethod": "" // qualified.class.name#methodName - signature: public static String method(String)
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="LR"
+    splines=polyline
+    
+
+'nodes 
+subgraph cluster_1327306968 { 
+   	label=factories
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   subgraph cluster_2037127379 { 
+   	label=VendingFactory
+	labeljust=l
+	fillcolor=white
+	style=filled
+   
+   VendingFactory1327306968XXXcreateCoffeeMachine1808118735[
+	label="+ createCoffeeMachine()"
+	style=filled
+	fillcolor=white
+	tooltip="VendingFactory
+
+&#10;  Creates a new CoffeeMachine instance with the specified name.&#10; &#10;  @param name The name of the coffee machine.&#10;  @return A new CoffeeMachine instance with the given name.&#10; "
+	fontcolor=darkgreen
+];
+
+VendingFactory1327306968XXXcreateSnackMachine1808118735[
+	label="+ createSnackMachine()"
+	style=filled
+	fillcolor=white
+	tooltip="VendingFactory
+
+&#10;  Creates a new SnackMachine instance with the specified name.&#10; &#10;  @param name The name of the snack machine.&#10;  @return A new SnackMachine instance with the given name.&#10; "
+	fontcolor=darkgreen
+];
+} 
+} 
+
+subgraph cluster_2390489 { 
+   	label=Main
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   subgraph cluster_1706522830 { 
+   	label=Main
+	labeljust=l
+	fillcolor=white
+	style=filled
+   
+   Main2390489XXXmain1859653459[
+	label="+ main()"
+	style=filled
+	fillcolor=white
+	tooltip="Main
+
+&#10;  The main method starts the application by initializing the VendingMachineUI.&#10; &#10;  @param args The command-line arguments (not used in this application).&#10; "
+	fontcolor=darkgreen
+];
+} 
+} 
+
+subgraph cluster_347467037 { 
+   	label=vending
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   subgraph cluster_1056893635 { 
+   	label=AbstractVendingMachine
+	labeljust=l
+	fillcolor=white
+	style=filled
+   
+   AbstractVendingMachine347467037XXXdeductBalance104431[
+	label="+ deductBalance()"
+	style=filled
+	fillcolor=white
+	tooltip="AbstractVendingMachine
+
+&#10;  Deducts a specified amount from the vending machine balance.&#10; &#10;  @param priceInCents The amount to deduct from the balance in cents.&#10; "
+	fontcolor=darkgreen
+];
+
+AbstractVendingMachine347467037XXXinsertMoney104431[
+	label="+ insertMoney()"
+	style=filled
+	fillcolor=white
+	tooltip="AbstractVendingMachine
+
+&#10;  Inserts money into the vending machine balance in cents.&#10; &#10;  @param cents The amount of money in cents to insert.&#10;  @throws VendingException If the inserted money exceeds the maximum capacity of the vending machine.&#10; "
+	fontcolor=darkgreen
+];
+} 
+
+subgraph cluster_1828946006 { 
+   	label=CoffeeMachine
+	labeljust=l
+	fillcolor=white
+	style=filled
+   
+   CoffeeMachine347467037XXXbrewCoffee104431[
+	label="+ brewCoffee()"
+	style=filled
+	fillcolor=white
+	tooltip="CoffeeMachine
+
+&#10;  Brew coffee using the provided coffee ID.&#10;  @param id The ID of the coffee product to brew.&#10;  @throws VendingException if the provided ID is invalid, there is insufficient balance,&#10;  or there are insufficient resources to brew the coffee.&#10; "
+	fontcolor=darkgreen
+];
+
+CoffeeMachine347467037XXXincreaseCoffeeBeansLevel104431[
+	label="+ increaseCoffeeBeansLevel()"
+	style=filled
+	fillcolor=white
+	tooltip="CoffeeMachine
+
+&#10;  Increase the coffee beans level in the coffee machine.&#10;  @param amount The amount of coffee beans to increase.&#10;  @throws IllegalArgumentException if the amount is invalid.&#10; "
+	fontcolor=darkgreen
+];
+
+CoffeeMachine347467037XXXincreaseMilkLevel104431[
+	label="+ increaseMilkLevel()"
+	style=filled
+	fillcolor=white
+	tooltip="CoffeeMachine
+
+&#10;  Increase the milk level in the coffee machine.&#10;  @param amount The amount of milk to increase.&#10;  @throws IllegalArgumentException if the amount is invalid.&#10; "
+	fontcolor=darkgreen
+];
+
+CoffeeMachine347467037XXXincreaseWaterLevel104431[
+	label="+ increaseWaterLevel()"
+	style=filled
+	fillcolor=white
+	tooltip="CoffeeMachine
+
+&#10;  Increase the water level in the coffee machine.&#10;  @param amount The amount of water to increase.&#10;  @throws IllegalArgumentException if the amount is invalid.&#10; "
+	fontcolor=darkgreen
+];
+
+CoffeeMachine347467037XXXinsertMoney104431[
+	label="+ insertMoney()"
+	style=filled
+	fillcolor=white
+	tooltip="CoffeeMachine
+
+&#10;  Inserts money into the vending machine balance in cents.&#10; &#10;  @param cents The amount of money in cents to insert.&#10;  @throws VendingException If the inserted money exceeds the maximum capacity of the vending machine.&#10; "
+	fontcolor=darkgreen
+];
+} 
+
+subgraph cluster_493750634 { 
+   	label=SnackMachine
+	labeljust=l
+	fillcolor=white
+	style=filled
+   
+   SnackMachine347467037XXXbuySnack104431[
+	label="+ buySnack()"
+	style=filled
+	fillcolor=white
+	tooltip="SnackMachine
+
+&#10;  Buys a snack from the snack machine using the provided snack ID.&#10; &#10;  @param id The ID of the snack product to buy.&#10;  @throws VendingException If an error occurs during the purchase process.&#10; "
+	fontcolor=darkgreen
+];
+
+SnackMachine347467037XXXinsertMoney104431[
+	label="+ insertMoney()"
+	style=filled
+	fillcolor=white
+	tooltip="SnackMachine
+
+&#10;  Inserts money into the snack machine.&#10; &#10;  @param cents The amount of money in cents to insert.&#10;  @throws VendingException If an error occurs during money insertion.&#10; "
+	fontcolor=darkgreen
+];
+} 
+} 
+
+subgraph cluster_3732 { 
+   	label=ui
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   subgraph cluster_492343480 { 
+   	label=VendingMachineUI
+	labeljust=l
+	fillcolor=white
+	style=filled
+   
+   VendingMachineUI3732XXXVendingMachineUI0[
+	label="+ VendingMachineUI()"
+	style=filled
+	fillcolor=white
+	tooltip="VendingMachineUI
+
+&#10;  Constructs a new VendingMachineUI and initializes the user interface.&#10; "
+	penwidth=4
+	fontcolor=darkgreen
+];
+} 
+} 
+
+'edges    
+AbstractVendingMachine347467037XXXinsertMoney104431 -> CoffeeMachine347467037XXXinsertMoney104431;
+AbstractVendingMachine347467037XXXinsertMoney104431 -> SnackMachine347467037XXXinsertMoney104431;
+CoffeeMachine347467037XXXbrewCoffee104431 -> AbstractVendingMachine347467037XXXdeductBalance104431;
+CoffeeMachine347467037XXXinsertMoney104431 -> AbstractVendingMachine347467037XXXinsertMoney104431;
+Main2390489XXXmain1859653459 -> VendingMachineUI3732XXXVendingMachineUI0;
+SnackMachine347467037XXXbuySnack104431 -> AbstractVendingMachine347467037XXXdeductBalance104431;
+VendingMachineUI3732XXXVendingMachineUI0 -> CoffeeMachine347467037XXXbrewCoffee104431;
+VendingMachineUI3732XXXVendingMachineUI0 -> CoffeeMachine347467037XXXincreaseCoffeeBeansLevel104431;
+VendingMachineUI3732XXXVendingMachineUI0 -> CoffeeMachine347467037XXXincreaseMilkLevel104431;
+VendingMachineUI3732XXXVendingMachineUI0 -> CoffeeMachine347467037XXXincreaseWaterLevel104431;
+VendingMachineUI3732XXXVendingMachineUI0 -> CoffeeMachine347467037XXXinsertMoney104431;
+VendingMachineUI3732XXXVendingMachineUI0 -> SnackMachine347467037XXXbuySnack104431;
+VendingMachineUI3732XXXVendingMachineUI0 -> SnackMachine347467037XXXinsertMoney104431;
+VendingMachineUI3732XXXVendingMachineUI0 -> VendingFactory1327306968XXXcreateCoffeeMachine1808118735;
+VendingMachineUI3732XXXVendingMachineUI0 -> VendingFactory1327306968XXXcreateSnackMachine1808118735;
+    
+}
+@enduml

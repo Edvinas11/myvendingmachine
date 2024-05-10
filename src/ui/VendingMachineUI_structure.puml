@@ -1,0 +1,249 @@
+@startuml
+
+/' diagram meta data start
+config=StructureConfiguration;
+{
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": "",
+    "treatFinalFieldsAsMandatory": false
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": false,
+    "cutEnum": true,
+    "cutTests": true,
+    "cutClient": true,
+    "cutDataAccess": false,
+    "cutInterfaceStructures": false,
+    "cutDataStructures": false,
+    "cutGetterAndSetter": true,
+    "cutConstructors": true
+  },
+  "graphTraversal": {
+    "forwardDepth": 3,
+    "backwardDepth": 3,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": true,
+    "hideInterfaceCalls": true, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false, // root node is included
+    "useMethodCallsForStructureDiagram": "ForwardOnly" // ForwardOnly, BothDirections, No
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showClassGenericTypes": true,
+    "showMethods": true,
+    "showMethodParameterNames": false,
+    "showMethodParameterTypes": true,
+    "showMethodReturnType": true,
+    "showPackageLevels": 2,
+    "showDetailedClassStructure": true
+  },
+  "rootClass": "ui.VendingMachineUI",
+  "extensionCallbackMethod": "sample" // qualified.class.name#methodName - signature: public static String method(String)
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="TB"
+    splines=polyline
+    
+
+'nodes 
+subgraph cluster_1003761308 { 
+   	label=products
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   Product1003761308[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Product</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   id: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   name: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   price: int [1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Snack1003761308[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Snack</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   quantity: int [1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_1327306968 { 
+   	label=factories
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   VendingFactory1327306968[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)VendingFactory</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ createCoffeeMachine(String): CoffeeMachine</TD></TR>
+<TR><TD ALIGN="LEFT" >+ createSnackMachine(String): SnackMachine</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_347467037 { 
+   	label=vending
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   AbstractVendingMachine347467037[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)AbstractVendingMachine</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   MAX_BALANCE_CAPACITY: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   cents: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   euro: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   name: String [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ deductBalance(int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ insertMoney(int, int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ insertMoney(int)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+CoffeeMachine347467037[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)CoffeeMachine</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   MAX_BALANCE_CAPACITY: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   MAX_COFFEE_BEANS_CAPACITY: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   MAX_COFFEE_CAPACITY: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   MAX_MILK_CAPACITY: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   MAX_WATER_CAPACITY: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   coffeeBeansLevel: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   milkLevel: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   products: List&lt;Coffee&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   waterLevel: int [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ addCoffee(Coffee)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ brewCoffee(int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ clone(): Object</TD></TR>
+<TR><TD ALIGN="LEFT" >+ increaseCoffeeBeansLevel(int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ increaseMilkLevel(int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ increaseWaterLevel(int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ insertMoney(int)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+SnackMachine347467037[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)SnackMachine</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   MAX_BALANCE_CAPACITY: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   MAX_SNACK_CAPACITY: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   products: List&lt;Snack&gt; [0..*]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ addSnack(Snack)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ buySnack(int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ insertMoney(int)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_3732 { 
+   	label=ui
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   VendingMachineUI3732[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)VendingMachineUI</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   coffeeMachineFrame: JFrame [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   frame: JFrame [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   mainPanel: JPanel [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   snackMachineFrame: JFrame [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   statusMessage: JLabel [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   vendingNameInput: JTextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   vendingTypeComboBox: JComboBox&lt;String&gt; [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- createSelectedVendingMachine(String)</TD></TR>
+<TR><TD ALIGN="LEFT" >- displayStatusMessage(String, Boolean)</TD></TR>
+<TR><TD ALIGN="LEFT" >- openCoffeeVendingMachinePanel(CoffeeMachine)</TD></TR>
+<TR><TD ALIGN="LEFT" >- openSnackVendingMachinePanel(SnackMachine)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+'edges    
+AbstractVendingMachine347467037 -> CoffeeMachine347467037[arrowhead=none, arrowtail=empty, dir=both];
+AbstractVendingMachine347467037 -> SnackMachine347467037[arrowhead=none, arrowtail=empty, dir=both];
+Product1003761308 -> Snack1003761308[arrowhead=none, arrowtail=empty, dir=both];
+SnackMachine347467037 -> Snack1003761308[label="products
+[0..*]"];
+    
+}
+@enduml
